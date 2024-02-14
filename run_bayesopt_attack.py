@@ -44,7 +44,7 @@ def BayesOpt_attack(obj_func, model_type, acq_type, batch_size, low_dim, sparse,
 
     # Specify the experiment results saving directory
     results_data_folder = f'{directory}exp_results/{obj_func}_tf_{model_type}_ob{obj_metric}_' \
-                          f'_freq{update_freq}_ld{low_dim}_{dim_reduction}/'
+                          f'_freq{update_freq}_ld{low_dim}_maxitr{num_iter}_{dim_reduction}/'
     if not os.path.exists(results_data_folder):
         os.makedirs(results_data_folder)
 
