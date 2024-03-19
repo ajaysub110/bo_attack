@@ -5,10 +5,11 @@
 import os
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 import objective_func.tf_models.Utils as util
 from objective_func.tf_models.setup_cifar import CIFAR, CIFARModel
-from objective_func.tf_models.setup_mnist import MNIST, MNISTModel
+from objective_func.tf_models.setup_mnist import MNIST, MNISTModel, MNISTHuman
 from utilities.upsampler import upsample_projection
 
 
@@ -48,7 +49,9 @@ class CNN(object):
             self.nchannel = 1
             self.dataset_name = 'mnist'
             self.total_classes = 10
-            data, model = MNIST(folder_path), MNISTModel(f'{folder_path}models/mnist', use_softmax=True)
+            # data, model = MNIST(folder_path), MNISTModel(f'{folder_path}models/mnist', use_softmax=True)
+            data = MNIST(folder_path)
+            model = MNISTHuman(data)
 
         elif 'cifar10' in dataset_name:
             self.d1 = 32

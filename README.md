@@ -1,3 +1,12 @@
+# BayesOpt attack on human
+
+1. Implement odd-one-out task with reaction time measurement
+  - When bayes opt is initialized, divide MNIST into images from each category
+  - We need 30 training trials, which we use to determine average RTs too. When BayesOpt is initialized,
+    call function that runs 30 odd-one-out trials with noise, and uses these to measure min and max RTs
+  - Then we start running the BayesOpt generated images. 1 image from original cat to which adversarial noise is added, and other
+    3 are images from target category perturbed with shuffled adversarial noise.
+
 # BayesOpt Attack
 
 This is the code repository for the query-efficient black-box attack method proposed in our paper [BayesOpt Adversarial Attack](https://openreview.net/pdf?id=Hkem-lrtvH). 

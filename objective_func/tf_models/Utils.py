@@ -33,16 +33,10 @@ def generate_attack_data_set(data, num_sample, img_offset, model, attack_type="t
     target_labels = []
     orig_img_id = []
 
-    pred_labels = np.argmax(model.model.predict(data.test_data), axis=1)
     true_labels = np.argmax(data.test_labels, axis=1)
-    correct_data_indices = np.where([1 if x==y else 0 for (x,y) in zip(pred_labels, true_labels)])
 
-    print("Total testing data:{}, correct classified data:{}".format(len(data.test_labels), len(correct_data_indices[0])))
-
-    data.test_data = data.test_data[correct_data_indices]
-    data.test_labels = data.test_labels[correct_data_indices]
-    true_labels = true_labels[correct_data_indices]
-
+    data.test_data = data.test_data
+    data.test_labels = data.test_labels
 
     np.random.seed(img_offset) # for parallel running
     class_num = data.test_labels.shape[1]
